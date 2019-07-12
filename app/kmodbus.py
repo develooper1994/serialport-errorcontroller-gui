@@ -20,7 +20,7 @@ class KModbus(QObject):
 
         self.master = None
 
-    def openSerial(self, port=None, baudrate=9600, bytesize=8, parity='N', stopbits=2, xonxoff=0):
+    def openSerial(self, port=None, baudrate=57600, bytesize=8, parity='N', stopbits=2, xonxoff=0):
         if port == None:
             if platform.system() == "Linux":
                 self.port = "/dev/ttyAMA0"

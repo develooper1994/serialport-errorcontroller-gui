@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog, QSizePolicy
 
+
 class Ui_ModbusBox(object):
     def setupUi(self, modbusBox):
         modbusBox.setObjectName("modbusBox")
@@ -40,7 +41,7 @@ class Ui_ModbusBox(object):
         self.setting_area.addWidget(self.dataBits_label, 3, 0, 1, 1)
         self.stopBits_comboBox = QtWidgets.QComboBox(self.gridLayoutWidget)
         self.stopBits_comboBox.setObjectName("stopBits_comboBox")
-        self.setting_area.addWidget(self.stopBits_comboBox,4, 1, 1, 1)
+        self.setting_area.addWidget(self.stopBits_comboBox, 4, 1, 1, 1)
         self.stopBits_label = QtWidgets.QLabel(self.gridLayoutWidget)
         self.stopBits_label.setObjectName("stopBits_label")
         self.setting_area.addWidget(self.stopBits_label, 4, 0, 1, 1)
@@ -84,7 +85,7 @@ class Ui_ModbusBox(object):
         self.responseBrowser = QtWidgets.QTextBrowser(self.horizontalLayoutWidget)
         self.responseBrowser.setObjectName("responseBrowser")
         self.horizontalLayout.addWidget(self.responseBrowser)
-        
+
         self.retranslateUi(modbusBox)
 
         self.openPortBtn.clicked.connect(modbusBox.open)
@@ -110,7 +111,5 @@ class Ui_ModbusBox(object):
         self.openPortBtn.setText(_translate("ModbusBox", "Open"))
         self.closePortBtn.setText(_translate("ModbusBox", "Close"))
         self.sendBtn.setText(_translate("ModbusBox", "Send"))
-        #self.requestLabel.setText(_translate("ModbusBox", "Request received"))
-        #self.responseLabel.setText(_translate("ModbusBox", "Response received"))
-
-    
+        # self.requestLabel.setText(_translate("ModbusBox", "Request received"))
+        # self.responseLabel.setText(_translate("ModbusBox", "Response received"))
