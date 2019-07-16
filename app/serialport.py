@@ -32,18 +32,20 @@ class SerialPort(QObject):
         self.serial.setStopBits(self.stop_bits)
         self.serial.setFlowControl(self.flow_control)
 
+        portinfo = (self.port_name, self.baud_rate)
         if self.serial.open(QIODevice.ReadWrite):
-            print("serial open success")
+            print(f"serial open success: {portinfo}")
             return True
         else:
-            print("serial open fail")
+            print(f"serial open fail: {portinfo}")
             return False
 
     def closeSerial(self):
         if self.serial.isOpen:
             self.serial.close()
 
-        print("serial close")
+        portinfo = (self.port_name, self.baud_rate)
+        print(f"serial close: {portinfo}")
 
     def writeData(self, data):
         print("=" * 50)

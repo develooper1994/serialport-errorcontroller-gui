@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from gui.modbusbox import ModbusBox
 
+
 class ModbusTab(QtWidgets.QVBoxLayout):
     def __init__(self, parent=None):
         super(ModbusTab, self).__init__(parent)

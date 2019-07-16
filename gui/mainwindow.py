@@ -4,8 +4,9 @@ from gui.ui_mainwindow import Ui_MainWindow
 from gui.serialtab import SerialTab
 from gui.modbustab import ModbusTab
 
+
 class MainWindow(QMainWindow):
-    def __init__ (self, app, translator, parent=None):
+    def __init__(self, app, translator, parent=None):
         super(MainWindow, self).__init__(parent)
 
         self._app = app
@@ -15,7 +16,7 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self._setup_ui()
-    
+
     def _setup_ui(self):
         """ """
         self._uart = SerialTab(self.ui.tab)

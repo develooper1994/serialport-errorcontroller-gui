@@ -11,7 +11,7 @@ class SerialBox(QtWidgets.QGroupBox):
     def __init__(self, parent=None):
         super(SerialBox, self).__init__(parent)
 
-        self.port = SerialPort()
+        self.port = SerialPort()  # default baudrate is 57600 for this application
         self.port.serial.readyRead.connect(self.read)
 
         self.ui = Ui_SerialBox()
@@ -24,15 +24,20 @@ class SerialBox(QtWidgets.QGroupBox):
 
     def serialPortInfo(self):
         port_list = QSerialPortInfo.availablePorts()
+        baudrates = ['300', '1200', '2400', '9600', '19200', '57600', '115200']
 
         for port in port_list:
             self.ui.portNamComboBox.insertItem(0, port.portName())
 
+        for br in baudrates:
+            self.ui.baudrateNamComboBox.insertItem(0, br)  # TODO! : Insert baudrates
+
     def open(self):
         port_name = self.ui.portNamComboBox.currentText()
+        br = self.ui.baudrateNamComboBox.currentText()
         print("open port:", port_name)
 
-        self.port.openSerial(port_name)
+        self.port.openSerial(port_name, br)  # TODO! : Insert baudrates
 
     def close(self):
         self.port.closeSerial()
