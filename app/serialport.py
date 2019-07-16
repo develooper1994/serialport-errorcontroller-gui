@@ -17,7 +17,7 @@ class SerialPort(QObject):
         self.parity = QSerialPort.NoParity
         self.stop_bits = QSerialPort.OneStop
         self.flow_control = QSerialPort.NoFlowControl
-
+        self.isserial_open = False
     def openSerial(self, port_name=None, baud_rate=None):
         if port_name:
             self.port_name = port_name
@@ -35,10 +35,11 @@ class SerialPort(QObject):
         portinfo = (self.port_name, self.baud_rate)
         if self.serial.open(QIODevice.ReadWrite):
             print(f"serial open success: {portinfo}")
-            return True
+            self.isserial_open = True
         else:
             print(f"serial open fail: {portinfo}")
-            return False
+            self.isserial_open = False
+            raise IOError(f"Cannot connect to device on port {portinfo}")
 
     def closeSerial(self):
         if self.serial.isOpen:

@@ -20,7 +20,7 @@ class MainWindow(QMainWindow):
     def _setup_ui(self):
         """ """
         self._uart = SerialTab(self.ui.tab)
-        self._modbus = ModbusTab(self.ui.tab_2)
+        #self._modbus = ModbusTab(self.ui.tab_2)
 
     def openFile(self):
         dir = os.path.dirname(__file__)

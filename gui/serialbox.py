@@ -1,4 +1,7 @@
-import os, sys
+import os, sys, string
+
+import platform
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtSerialPort import QSerialPortInfo
 from gui.ui_serialbox import Ui_SerialBox
@@ -33,7 +36,12 @@ class SerialBox(QtWidgets.QGroupBox):
             self.ui.baudrateNamComboBox.insertItem(0, br)
 
     def open(self):
-        port_name = self.ui.portNamComboBox.currentText()
+        operating_system = platform.system()
+        port_name = self.ui.port_comboBox.currentText()  # error occurs, # TODO! : fix the bug. Open button closes window
+        if port_name == "":
+            pass
+        if operating_system == 'Linux':
+            port_name = os.path.join("/dev", self.ui.port_comboBox.currentText())
         br = self.ui.baudrateNamComboBox.currentText()
         print("open port:", port_name)
 
