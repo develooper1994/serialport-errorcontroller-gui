@@ -30,14 +30,14 @@ class SerialBox(QtWidgets.QGroupBox):
             self.ui.portNamComboBox.insertItem(0, port.portName())
 
         for br in baudrates:
-            self.ui.baudrateNamComboBox.insertItem(0, br)  # TODO! : Insert baudrates
+            self.ui.baudrateNamComboBox.insertItem(0, br)
 
     def open(self):
         port_name = self.ui.portNamComboBox.currentText()
         br = self.ui.baudrateNamComboBox.currentText()
         print("open port:", port_name)
 
-        self.port.openSerial(port_name, br)  # TODO! : Insert baudrates
+        self.port.openSerial(port_name, br)  # TODO! : fix the bug. Open button closes window
 
     def close(self):
         self.port.closeSerial()
